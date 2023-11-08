@@ -19,7 +19,8 @@ const accountObject = {
         const expenseAmount = parseFloat(prompt("What was your expense(rent/gas/food etc)?"));
         this.expenses.push(expenseAmount);
         console.log(this.expenses);
-        menu();
+
+        
     },
     addIncome: function () {
       // 1. we need a prompt to ask the user "How much was your income?"
@@ -30,7 +31,7 @@ const accountObject = {
       // just for checking that it works
       console.log(this.incomes);
       // 4. we want to show the menu to the user again
-      menu();
+      expenseType();
     },
     listAllExpenses: function () {},
     getSummary: function () {},
@@ -55,7 +56,16 @@ const accountObject = {
 // we need to wrap the propmt() in a function called parseFloat(). Why is that? You need to do some
 // googling anf the put your answer in a comment in your code.
 // the syntax you can use looks like this:
-
+function expenseType(){
+    const type = parseFloat(
+        prompt(
+          "How much was your expense"
+        )
+      );
+      menu();
+if(type===rent){
+    expenseType();
+}}
 function menu() {
     const choice = parseFloat(
       prompt(
@@ -72,8 +82,6 @@ function menu() {
     } else if (choice === 2) {
         accountObject.addExpenses();
       // first call object and then function like the same way as choice === 1
-    }if(rent){
-        const rentAmount = parseFloat(prompt("How much was your expense?"));
     }
   }
   
