@@ -13,8 +13,9 @@
 // income, your total expenses and also calculate your current balances (income - expenses).
 const accountObject = {
     name: "Ripan",
-    expenses: [],
-    incomes: [],
+    const expenseCategory = {expenses: [],
+      amount: []},
+     incomes: [],
     addExpenses: function () {
         const expenseAmount = parseFloat(prompt("What was your expense(rent/gas/food etc)?"));
         this.expenses.push(expenseAmount);
@@ -35,6 +36,7 @@ const accountObject = {
     },
     listAllExpenses: function () {},
     getSummary: function () {},
+    
   };
   // create a function called menu()
   
