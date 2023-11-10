@@ -62,9 +62,11 @@ function expenseType(){
           "How much was your expense"
         )
       );
-      menu();
-if(type===rent){
-    expenseType();
+    
+if(rent){
+    console.log("this");
+}else{
+    console.log("nothing");
 }}
 function menu() {
     const choice = parseFloat(
