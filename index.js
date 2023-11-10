@@ -13,16 +13,20 @@
 // income, your total expenses and also calculate your current balances (income - expenses).
 const accountObject = {
     name: "Ripan",
-    const expenseCategory = {expenses: [],
-      amount: []},
+     expenses: [],
      incomes: [],
-    addExpenses: function () {
-        const expenseAmount = parseFloat(prompt("What was your expense(rent/gas/food etc)?"));
-        this.expenses.push(expenseAmount);
-        console.log(this.expenses);
-
-        
-    },
+     addExpenses: function () {
+      const expenseCategory = prompt("What kind of expense was it?");
+      const expenseAmount = parseFloat(prompt("How much was you expense?"));
+      const newExpense = {
+        amount: expenseAmount,
+        expense: expenseCategory
+      }
+      console.log(newExpense);
+      this.expenses.push(newExpense);
+      console.log(this.expenses);
+      menu();
+  },
     addIncome: function () {
       // 1. we need a prompt to ask the user "How much was your income?"
       const incomeAmount = parseFloat(prompt("How much was your income?"));
@@ -32,10 +36,21 @@ const accountObject = {
       // just for checking that it works
       console.log(this.incomes);
       // 4. we want to show the menu to the user again
-      expenseType();
+      menu();
     },
-    listAllExpenses: function () {},
-    getSummary: function () {},
+    listAllExpenses: function () {
+      for (let i=0; i < this.expenses.length; i++ ) {
+        alert(this.expenses[i].amount + " " + this.expenses[i].expense)
+      }
+      menu();
+    },
+    getSummary: function () {
+      const totalBalance = this.incomeAmount - this.expenseAmount;
+      const summary = alert(`${this.name}, your balances are:
+      Total balance = ${this.balance}
+      Total income = ${this.incomes}
+      Total expences = ${this.expenses}`);
+    },
     
   };
   // create a function called menu()
@@ -58,18 +73,7 @@ const accountObject = {
 // we need to wrap the propmt() in a function called parseFloat(). Why is that? You need to do some
 // googling anf the put your answer in a comment in your code.
 // the syntax you can use looks like this:
-function expenseType(){
-    const type = parseFloat(
-        prompt(
-          "How much was your expense"
-        )
-      );
-    
-if(rent){
-    console.log("this");
-}else{
-    console.log("nothing");
-}}
+
 function menu() {
     const choice = parseFloat(
       prompt(
@@ -86,9 +90,12 @@ function menu() {
     } else if (choice === 2) {
         accountObject.addExpenses();
       // first call object and then function like the same way as choice === 1
+    }else if (choice === 3) {
+      accountObject.listAllExpenses();
+    }else if ( choice === 4) {
+      accountObject.getSummary();
     }
   }
-  
   // important to call the function otherwise code wint run
   menu();
   /* const amount = parseFloat(
@@ -124,4 +131,4 @@ if (choice == 1) {
 // will display any message that we want and also display an input field where the user
 // can type an input. Like this:
 //const age = parseFloat(propmpt("How old are you?"));
-// whatever the user types in the input field will be stored in the variable age.
+// whatever the user types in the input field will be stored in the variable age
